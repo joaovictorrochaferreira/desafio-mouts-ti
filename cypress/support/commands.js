@@ -21,3 +21,10 @@ Cypress.Commands.add('creatNewAdmin', () => {
     cy.get('[data-testid="cadastrar"]').click();
     cy.get(".alert").should("contain", "Cadastro realizado com sucesso");
 })
+
+Cypress.Commands.add("getUsers", () => {
+  cy.request({
+    method: "GET",
+    url: "https://serverest.dev/usuarios",
+  });
+});
