@@ -1,5 +1,25 @@
 {
   "dependencies": {
+    "@faker-js/faker": "^10.0.0"
+  },
+  "name": "desafio-mouts-ti",
+  "version": "1.0.0",
+  "description": "Desafio Mouts TI",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaovictorrochaferreira/desafio-mouts-ti.git"
+  },
+  "author": "Joao Victor ROcha Ferreira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaovictorrochaferreira/desafio-mouts-ti/issues"
+  },
+  "homepage": "https://github.com/joaovictorrochaferreira/desafio-mouts-ti#readme",
+  "devDependencies": {
     "cypress": "^15.0.0"
   }
 }
