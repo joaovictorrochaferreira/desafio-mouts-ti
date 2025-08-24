@@ -1,25 +1,23 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import { faker } from '@faker-js/faker';
+
+Cypress.Commands.add('creatNewUser', () => {
+    cy.visit("/login");
+    cy.get('[data-testid="cadastrar"]').click();
+    cy.get('[data-testid="nome"]').type(faker.person.firstName());
+    cy.get('[data-testid="email"]').type(faker.internet.email());
+    cy.get('[data-testid="password"]').type(faker.internet.password());
+    cy.get('[data-testid="cadastrar"]').click();
+    cy.get(".alert").should("contain", "Cadastro realizado com sucesso");
+})
+
+Cypress.Commands.add('creatNewAdmin', () => {
+    cy.visit("/login");
+    cy.get('[data-testid="cadastrar"]').click();
+    cy.get('[data-testid="nome"]').type(faker.person.firstName());
+    cy.get('[data-testid="email"]').type(faker.internet.email());
+    cy.get('[data-testid="password"]').type(faker.internet.password());
+    cy.get(".form-check").should("contain", "Cadastrar como administrador?");
+    cy.get('[data-testid="checkbox"]').check();
+    cy.get('[data-testid="cadastrar"]').click();
+    cy.get(".alert").should("contain", "Cadastro realizado com sucesso");
+})
