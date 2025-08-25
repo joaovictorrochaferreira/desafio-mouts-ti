@@ -2,14 +2,14 @@
 
 Projeto de automação de testes desenvolvido com Cypress como parte do processo seletivo proposto pela Mouts TI
 
-## ✨ Tecnologias
+## Tecnologias
 
   * **Node.js**: Ambiente de execução JavaScript.
   * **Cypress**: Framework principal para automação de testes.
   * **Faker-JS**: Biblioteca para geração de dados dinâmicos.
   * **Git**: Sistema de controle de versão.
 
-## ✅ Pré-requisitos
+## Pré-requisitos
 
 Antes de iniciar, certifique-se de que os seguintes softwares estão instalados em sua máquina:
 
@@ -17,7 +17,7 @@ Antes de iniciar, certifique-se de que os seguintes softwares estão instalados 
   * **Git** (versão 2.49.0.windows.1)
   * **Visual Studio Code** 
 
-## 📦 Instalação
+## Instalação
 
 Siga os passos abaixo para configurar o ambiente do projeto localmente.
 
@@ -42,7 +42,7 @@ Siga os passos abaixo para configurar o ambiente do projeto localmente.
     npm install
     ```
 
-## 🚀 Execução dos testes
+## Execução dos testes
 
 Os testes podem ser executados de duas maneiras: com a interface gráfica do Cypress (modo interativo) ou diretamente pelo terminal (modo headless).
 
@@ -51,13 +51,16 @@ Os testes podem ser executados de duas maneiras: com a interface gráfica do Cyp
 Permite visualizar a execução em tempo real em um navegador.
 
 1.  **Abra o Cypress Test Runner:**
+   
     ```bash
     npx cypress open
     ```
-2.  Na interface do Cypress, selecione o navegador e o arquivo de teste que deseja executar.
+3.  Na interface do Cypress, selecione o navegador e o arquivo de teste que deseja executar.
+   
 <img width="642" height="429" alt="image" src="https://github.com/user-attachments/assets/11474874-5dba-4527-9933-3abe0d47a7a3" />
 
-3. Selecione um teste e espere a execução 
+5. Selecione um teste e espere a execução
+
 <img width="1919" height="713" alt="image" src="https://github.com/user-attachments/assets/274a0430-158b-4ace-8c7b-168d63128abf" />
 
 <img width="1918" height="911" alt="image" src="https://github.com/user-attachments/assets/a849a239-0f23-49e2-b713-b343cb6be088" />
@@ -67,6 +70,7 @@ Permite visualizar a execução em tempo real em um navegador.
 Executa todos os testes em segundo plano, sem abrir uma interface gráfica.
 
 1.  **Execute o comando:**
+   
     ```bash
     npx cypress run
     ```
