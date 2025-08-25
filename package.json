@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/joaovictorrochaferreira/desafio-mouts-ti#readme",
   "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
     "cypress": "^15.0.0"
   }
 }
