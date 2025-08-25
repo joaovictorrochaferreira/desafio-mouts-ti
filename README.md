@@ -61,9 +61,9 @@ Permite visualizar a execução em tempo real em um navegador.
 
 5. Selecione um teste e espere a execução
 
-<img width="1919" height="713" alt="image" src="https://github.com/user-attachments/assets/274a0430-158b-4ace-8c7b-168d63128abf" />
+<img width="1908" height="534" alt="image" src="https://github.com/user-attachments/assets/409c3180-2056-412f-b7f0-b4cbe593d552" />
 
-<img width="1918" height="911" alt="image" src="https://github.com/user-attachments/assets/a849a239-0f23-49e2-b713-b343cb6be088" />
+<img width="1909" height="755" alt="image" src="https://github.com/user-attachments/assets/9068a52a-147b-49b2-899f-aeb8456ba731" />
 
 ### Modo Headless (via terminal)
 
