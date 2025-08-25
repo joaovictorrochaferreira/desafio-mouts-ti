@@ -1,47 +1,46 @@
-/// <reference types="cypress" />
-
-import { faker } from "@faker-js/faker";
+/// <reference types="cypress"/>
 
 describe("Edit an user", () => {
-    let userData;
-
-    before(() => {
-        cy.fixture("user.json").then((data) => {
-            userData = data;
-        });
+  it("E-mail already in use", () => {
+    cy.getUsers().then((response) => {
+      const idToUpdate = response.body.usuarios[0]._id;
+      const existingEmail = response.body.usuarios[1].email;
+      cy.request({
+        method: "PUT",
+        url: `https://serverest.dev/usuarios/${idToUpdate}`,
+        failOnStatusCode: false,
+        body: {
+          nome: "Usuário Atualizado",
+          email: existingEmail,
+          password: "nova-senha",
+          administrador: "false",
+        },
+      }).then((putResponse) => {
+        expect(putResponse.status).to.eq(400);
+        expect(putResponse.body.message).to.eq(
+          "Este email já está sendo usado"
+        );
+      });
     });
+  });
 
-    it("E-mail already in use", () => {
-        cy.request({
-            method: "PUT",
-            url: "https://serverest.dev/usuarios/07wgY8dvbmBtIhrN",
-            failOnStatusCode: false,
-            body: {
-                nome: userData.name,
-                email: userData.email,
-                password: userData.password,
-                administrador: "false",
-            },
-        }).then((response) => {
-            expect(response.status).to.eq(400);
-            expect(response.body.message).eq("Este email já está sendo usado");
-        });
+  it("Success update", () => {
+    cy.getUsers().then((response) => {
+      const firstUserId = response.body.usuarios[0]._id;
+      const firstUser = response.body.usuarios[0];
+      cy.request({
+        method: "PUT",
+        url: `https://serverest.dev/usuarios/${firstUserId}`,
+        body: {
+          nome: firstUser.nome,
+          email: firstUser.email,
+          password: firstUser.password,
+          administrador: "false",
+        },
+      }).then((response) => {
+        expect(response.status).to.eq(200);
+        expect(response.body.message).to.eq("Registro alterado com sucesso");
+      });
     });
-
-    it("Success update", () => {
-        cy.request({
-            method: "PUT",
-            url: "https://serverest.dev/usuarios/xfH3vMihmvsX9g6s",
-            body: {
-                nome: faker.person.firstName(),
-                email: faker.internet.email(),
-                password: faker.internet.password(),
-                administrador: "false",
-            },
-        }).then((response) => {
-            expect(response.status).to.eq(200);
-            expect(response.body.message).eq("Registro alterado com sucesso");
-        });
-    });
-
+  });
 });

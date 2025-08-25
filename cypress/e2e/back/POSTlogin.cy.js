@@ -1,26 +1,26 @@
 /// <reference types="cypress" />
 
-describe('Login from API', function () {
-    let userData;
+import { faker } from "@faker-js/faker";
 
-    before(() => {
-        cy.fixture("user.json").then((data) => {
-            userData = data;
-        });
+describe("Login from API", function () {
+  it("Regular user login", () => {
+    const user = {
+      nome: faker.person.firstName(),
+      email: faker.internet.email(),
+      password: faker.internet.password(),
+    };
+    cy.createNewUser(user);
+    cy.request({
+      method: "POST",
+      url: "https://serverest.dev/login",
+      body: {
+        email: user.email,
+        password: user.password,
+      },
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body.message).to.eq("Login realizado com sucesso");
+      expect(response.body).to.have.property("authorization");
     });
-
-    it("Regular user login", () => {
-        cy.request({
-            method:"POST",
-            url: "https://serverest.dev/login",
-            failOnStatusCode: false,
-            body:{
-                email: userData.email,
-                password: userData.password,
-            },
-        }).then((response) => {
-            expect(response.body).to.have.property("message").eq("Login realizado com sucesso");
-            expect(response.body).to.have.property("authorization");
-        })
-    })
+  });
 });
